@@ -1,10 +1,20 @@
-<md-toolbar class="toolbar" layout="row" layout-align="start center" layout-padding="">
-  <div class="navbar-left" layout="row" layout-align="center center">
-    <login-buttons></login-buttons>
-    <md-button ng-href="/about">About</md-button>
-  </div>
-  <span flex=''></span>
-  <navbar-right>
-    <a href="/">skillsoutApp</a>
-  </navbar-right>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button aria-label="Logo" class="md-fab md-white">
+            <img class="png-icon" src="img/logo.png"/>
+        </md-button>
+        Skillout Dance
+        <span flex="">
+        </span>
+        <md-button ng-repeat="item in list">
+            {{item.name}}
+        </md-button>
+        <md-icon aria-label="Search" md-svg-icon="search">
+        </md-icon>
+        <md-button class="md-icon-button" hide-gt-sm="" ng-click="toggleSidenav()">
+            <md-icon aria-label="Menu" class="material-icons">
+                menu
+            </md-icon>
+        </md-button>
+    </div>
 </md-toolbar>

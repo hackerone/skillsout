@@ -3,6 +3,6 @@
 angular.module('skillsoutApp')
 .config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-  .primaryPalette('deep-orange')
+  .primaryPalette('pink')
   .accentPalette('lime');
 });
