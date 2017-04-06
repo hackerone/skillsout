@@ -8,33 +8,110 @@
                 Book a class with a skilled teacher in a convenient time and location
             </h3>
         </div>
-        <div class="search-box">
-            <md-input-container>
-                <label>
-                    
-                        WHERE
-                    
-                </label>
-                <input type="text"/>
-            </md-input-container>
-            <md-input-container>
-                <label>
-                    
-                        WHAT
-                    
-                </label>
-                <input type="text"/>
-            </md-input-container>
-            <md-input-container>
-                <md-button class="md-primary md-raised">
-                    Search
-                </md-button>
-            </md-input-container>
-        </div>
+        <md-content class="search-box" layout-padding="">
+            <div>
+                <form name="userForm">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>
+                                City
+                            </label>
+                            <input ng-model="user.city"/>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <label>
+                                State
+                            </label>
+                            <md-select ng-model="user.state">
+                                <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                                    {{state.abbrev}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm="">
+                            <md-button class="md-primary md-raised">
+                                Search
+                            </md-button>
+                        </md-input-container>
+                    </div>
+                </form>
+            </div>
+        </md-content>
     </div>
-    <div class="content">
-        <div layout="row" layout-wrap="">
-           
+    <md-content class="content">
+        <div class="md-primary" layout="column" layout-align="center center">
+            <h1>
+                FEATURED PROFILES
+            </h1>
         </div>
-    </div>
+       
+        <div layout="row" layout-margin layout-align="start center" layout-wrap="">
+            <md-card flex="30">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">
+                            Action buttons
+                        </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles.
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>
+                        Action 1
+                    </md-button>
+                    <md-button>
+                        Action 2
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+            <md-card flex="30">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">
+                            Action buttons
+                        </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles.
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>
+                        Action 1
+                    </md-button>
+                    <md-button>
+                        Action 2
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+            <md-card flex="30">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">
+                            Action buttons
+                        </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        The titles.
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>
+                        Action 1
+                    </md-button>
+                    <md-button>
+                        Action 2
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
 </div>
