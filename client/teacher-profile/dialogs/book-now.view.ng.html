@@ -1,0 +1,97 @@
+<md-dialog aria-label="Mango (Fruit)" class="payment-dialog">
+    <md-dialog-content ng-if="paymentForm">
+        <form ng-cloak="">
+            <div class="md-dialog-content">
+                <h2 class="text-center">
+                    PAYMENT
+                </h2>
+                <md-content layout-gt-sm="row" layout-padding="" md-theme="docs-dark">
+                    <md-input-container flex="50">
+                        <label>
+                            Name On Card
+                        </label>
+                        <input ng-model="payment.nameOnCard"/>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>
+                            Card Number
+                        </label>
+                        <input ng-model="payment.email" type="email"/>
+                    </md-input-container>
+                </md-content>
+                <md-content layout-padding="">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex="50">
+                            <label>
+                                Postal Code
+                            </label>
+                            <input md-maxlength="5" name="postalCode" ng-model="payment.postalCode" ng-pattern="/^[0-9]{5}$/" placeholder="12345" required=""/>
+                            <div multiple="" ng-messages="paymentForm.postalCode.$error" role="alert">
+                                <div class="my-message" ng-message="required">
+                                    You must supply a postal code.
+                                </div>
+                                <div class="my-message" ng-message="pattern">
+                                    That doesn't look like a valid postal
+                    code.
+                                </div>
+                                <div class="my-message" ng-message="md-maxlength">
+                                    Don't use the long version silly...we don't need to be that specific...
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="25">
+                            <label>
+                                Expiry Date
+                            </label>
+                            <input ng-model="payment.expiryDate" placeholder="MM/YYYYY" type="text"/>
+                        </md-input-container>
+                        <md-input-container flex="25">
+                            <label>
+                                Security Code
+                            </label>
+                            <input ng-model="payment.securityCode" type="text"/>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content>
+                    <div layout="column" layout-align="center center">
+                        <md-button class="md-primary md-raised">
+                            Proceed
+                        </md-button>
+                        <span>
+                            OR
+                        </span>
+                        <md-button class="md-primary md-raised">
+                            PAY WITH PAYPAL
+                        </md-button>
+                    </div>
+                </md-content>
+            </div>
+        </form>
+    </md-dialog-content>
+    <md-content class="text-center thankyou-container" layout-align="center center" ng-if="!paymentForm">
+        <h2 class="md-primary">
+            THANK YOU
+        </h2>
+        <p>
+            Thank You for booking your next lesson with skillout! See you in class!
+        </p>
+        <p>
+            Why not invite your friends to join you?
+        </p>
+        <md-button class="md-primary md-raised">
+            INVITE FRIEND
+        </md-button>
+        <div layout="row" layout-align="center center">
+            <p>
+                <label style="padding-top:2px;">
+                    Share your class:
+                </label>
+                <md-icon class="fa fa-2x s50 md-primary md-hue-2" md-font-icon="fa-facebook-official" style="color:#3B579D">
+                </md-icon>
+                <md-icon class="fa fa-2x s50 md-primary md-hue-2" md-font-icon="fa-twitter-square" style="color:#1DA1F2">
+                </md-icon>
+            </p>
+        </div>
+    </md-content>
+</md-dialog>

@@ -1,0 +1,74 @@
+<div layout="column" layout-padding="" style="background-color:#ccc;">
+    <div  layout="row" layout-margin="">
+        <md-card class="teacher-detail" flex="30" layout="column">
+            <h1 class="md-title">
+                Headline
+            </h1>
+
+
+            <img ng-src="http://betheme.muffingroupsc.netdna-cdn.com/be/theme/wp-content/uploads/2015/09/home_betheme_ourteam_5.jpg" style="height:300px;"/>
+            <p class="md-body-2 padding-5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </p>
+            <h3>
+                London
+            </h3>
+            <md-divider>
+            </md-divider>
+            <h3>
+                $12/hour
+            </h3>
+            <md-divider>
+            </md-divider>
+            <md-button class="md-raised md-primary" ng-click="bookNow($event)">
+                Book Now
+            </md-button>
+        </md-card>
+        <div flex="" layout="column">
+            <iframe class="youtube-video" ng-src="https://www.youtube.com/embed/JGSGhb8tzoA" style="height:300px;">
+            </iframe>
+            <md-content flex="" layout="column">
+                <md-list flex="">
+                    <md-list-item class="md-3-line" ng-click="null" ng-repeat="item in todos">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>
+                                {{ item.who }}
+                            </h3>
+                            <h4>
+                                {{ item.what }}
+                            </h4>
+                            <p>
+                                {{ item.notes }}
+                            </p>
+                        </div>
+                        <span flex></span>
+                        <div>
+                          <md-button class="md-raised md-primary">Book Now</md-button>
+                        </div>
+                    </md-list-item>
+                    <md-divider>
+                    </md-divider>
+                </md-list>
+            </md-content>
+        </div>
+    </div>
+    <md-content class="bottom-reviews" flex="" layout="row" layout-padding="">
+        <md-list flex="">
+            <md-list-item class="md-3-line" ng-click="null" ng-repeat="item in todos">
+                <div class="md-list-item-text" layout="column">
+                    <h3>
+                        {{ item.who }}
+                    </h3>
+                    <h4>
+                        {{ item.what }}
+                    </h4>
+                    <p>
+                        {{ item.notes }}
+                    </p>
+                </div>
+            </md-list-item>
+            <md-divider>
+            </md-divider>
+        </md-list>
+    </md-content>
+</div>

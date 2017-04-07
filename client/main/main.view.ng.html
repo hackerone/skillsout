@@ -44,9 +44,9 @@
                 FEATURED PROFILES
             </h1>
         </div>
-        <div class="margin-row" layout="row" layout-margin="">
+        <div class="margin-row" layout="row" layout-wrap>
             <md-card flex="30" md-theme-watch="" ng-repeat="teacher in teachersProfile track by $index">
-                <img ng-src="{{teacher.profileImg}}" class="md-card-image" alt="Washed Out">{{teacher.profileImg}}
+                <img ng-src="{{teacher.profileImg}}" class="md-card-image" alt="Washed Out">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">
@@ -67,7 +67,7 @@
                     </md-button>
                      <span flex=""></span>
                     <md-button>
-                      {{teacher.star}}
+                      <rating value="foo" color="red"></rating>
                     </md-button>
                 </md-card-actions>
                 <md-card-actions layout="row" layout-align="start start">
