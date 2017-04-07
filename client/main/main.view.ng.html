@@ -44,74 +44,55 @@
                 FEATURED PROFILES
             </h1>
         </div>
-       
-        <div layout="row" layout-margin layout-align="start center" layout-wrap="">
-            <md-card flex="30">
+        <div class="margin-row" layout="row" layout-margin="">
+            <md-card flex="30" md-theme-watch="" ng-repeat="teacher in teachersProfile track by $index">
+                <img ng-src="{{teacher.profileImg}}" class="md-card-image" alt="Washed Out">{{teacher.profileImg}}
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">
-                            Action buttons
+                            Card with image
+                        </span>
+                        <span class="md-subhead">
+                            Large
                         </span>
                     </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media">
+                        </div>
+                    </md-card-title-media>
                 </md-card-title>
-                <md-card-content>
-                    <p>
-                        The titles.
-                    </p>
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
+                 <md-card-actions layout="row" layout-align="start start">
                     <md-button>
-                        Action 1
+                         {{teacher.name}}
                     </md-button>
+                     <span flex=""></span>
                     <md-button>
-                        Action 2
+                      {{teacher.star}}
                     </md-button>
                 </md-card-actions>
-            </md-card>
-            <md-card flex="30">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">
-                            Action buttons
-                        </span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <p>
-                        The titles.
-                    </p>
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
+                <md-card-actions layout="row" layout-align="start start">
                     <md-button>
-                        Action 1
+                        {{teacher.subject}}
                     </md-button>
+                     <span flex=""></span>
                     <md-button>
-                        Action 2
+                        <a ui-sref="#">VISIT PROFILE</a>
                     </md-button>
                 </md-card-actions>
+
+
             </md-card>
-            <md-card flex="30">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">
-                            Action buttons
-                        </span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <p>
-                        The titles.
-                    </p>
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button>
-                        Action 1
-                    </md-button>
-                    <md-button>
-                        Action 2
-                    </md-button>
-                </md-card-actions>
-            </md-card>
+        </div>
+        <div class="sign-up-banner" layout="column" layout-align="center center" layout-padding="">
+            <h1 class="md-display-1">
+                GET STARTED!
+            </h1>
+            <h1 class="md-headline">
+                LERANING HOW TO DANCE IS JUST A CLICK AWAY!
+            </h1>
+            <md-button class="md-primary md-raised">
+                SIGN UP
+            </md-button>
         </div>
     </md-content>
 </div>
