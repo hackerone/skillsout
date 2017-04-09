@@ -1,0 +1,51 @@
+<div class="flex-scrollable" id="login" layout="column" ms-scroll="">
+    <div id="login-form-wrapper" layout="column" layout-align="center center">
+        <div class="md-whiteframe-8dp" id="login-form">
+            <div class="title" >
+                Contact Us
+            </div>
+
+            <form name="contactForm" ng-submit="vm.sendContactMail()" novalidate="">
+                <md-input-container class="md-block" md-no-float="">
+                    <input name="email" ng-model="vm.form.email" ng-pattern="/^.+@.+\..+$/" placeholder="Email" required="" type="text"/>
+                        <div multiple="" ng-messages="contactForm.email.$error" role="alert">
+                            <div ng-message="required">
+                                <span >
+                                    Email field is required
+                                </span>
+                            </div>
+                            <div ng-message="pattern">
+                                <span >
+                                    Email must be a valid e-mail address
+                                </span>
+                            </div>
+                        </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float="">
+                    <input name="name" ng-model="vm.form.name" placeholder="Name" required="" type="text"/>
+                        <div ng-messages="contactForm.name.$error" role="alert">
+                            <div ng-message="required">
+                                <span>
+                                    Name field is required
+                                </span>
+                            </div>
+                        </div>
+                    
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float="">
+                    <textarea name="description" ng-model="vm.form.description" placeholder="Description of inquiry"></textarea>
+                    <div ng-messages="contactForm.description.$error" role="alert">
+                        <div ng-message="required">
+                            <span>
+                                Description of inquiry
+                            </span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button aria-label="SUBMIT" class="md-raised md-primary submit-button" ng-disabled="contactForm.$invalid || contactForm.$pristine" type="submit">
+                    Submit
+                </md-button>
+            </form>
+        </div>
+    </div>
+</div>

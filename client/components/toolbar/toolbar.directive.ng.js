@@ -14,12 +14,5 @@ function toolbarController($scope, $mdSidenav) {
     console.log('hi');
     $scope.toggleSidenav = function () {
         $mdSidenav('left').toggle()
-    };
-    $scope.list = [{
-            label: 'Phone Android',
-            name: 'My Account'
-        }, {
-            label: 'Phone iPhone',
-            name: 'Login'
-        }];
+    };  
 }

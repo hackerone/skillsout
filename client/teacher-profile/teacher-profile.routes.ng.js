@@ -3,8 +3,8 @@
 angular.module('skillsoutApp')
 .config(function($stateProvider) {
   $stateProvider
-  .state('teacher-profile', {
-    url: '/teacher-profile',
+  .state('teacherProfile', {
+    url: '/teacher-profile/:id',
     templateUrl: 'client/teacher-profile/teacher-profile.view.ng.html',
     controller: 'TeacherProfileCtrl'
   });

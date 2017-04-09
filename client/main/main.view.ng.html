@@ -2,7 +2,7 @@
     <div class="header" layout="column" layout-align="center center">
         <div>
             <h1>
-                FIND A CLASS
+                FIND A CLAS
             </h1>
             <h3>
                 Book a class with a skilled teacher in a convenient time and location
@@ -10,26 +10,22 @@
         </div>
         <md-content class="search-box" layout-padding="">
             <div>
-                <form name="userForm">
+                <form name="userForm" ng-submit="vm.searchTeachers(userForm)">
                     <div layout="row">
                         <md-input-container class="md-block" flex-gt-sm="">
                             <label>
-                                City
+                                WHAT?
                             </label>
-                            <input ng-model="user.city"/>
+                            <input ng-model="vm.search.term"/>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm="">
                             <label>
-                                State
+                                WHERE?
                             </label>
-                            <md-select ng-model="user.state">
-                                <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                                    {{state.abbrev}}
-                                </md-option>
-                            </md-select>
+                            <input ng-model="vm.search.location"/>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm="">
-                            <md-button class="md-primary md-raised">
+                            <md-button class="md-primary md-raised" type="submit">
                                 Search
                             </md-button>
                         </md-input-container>
@@ -44,43 +40,29 @@
                 FEATURED PROFILES
             </h1>
         </div>
-        <div class="margin-row" layout="row" layout-wrap>
-            <md-card flex="30" md-theme-watch="" ng-repeat="teacher in teachersProfile track by $index">
-                <img ng-src="{{teacher.profileImg}}" class="md-card-image" alt="Washed Out">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">
-                            Card with image
+        <div class="margin-row" layout="row" layout-wrap="">
+            <md-card flex="30" md-theme-watch="" ng-repeat="teacher in vm.teachersProfile track by $index">
+                <img alt="Washed Out" class="md-card-image" ng-src="{{teacher.profileImage}}"/>
+                    <md-card-actions layout="row" layout-align="start start">
+                        <span>
+                            {{teacher.name}}
                         </span>
-                        <span class="md-subhead">
-                            Large
+                        <span flex="">
                         </span>
-                    </md-card-title-text>
-                    <md-card-title-media>
-                        <div class="md-media-lg card-media">
-                        </div>
-                    </md-card-title-media>
-                </md-card-title>
-                 <md-card-actions layout="row" layout-align="start start">
-                    <md-button>
-                         {{teacher.name}}
-                    </md-button>
-                     <span flex=""></span>
-                    <md-button>
-                      <rating value="foo" color="red"></rating>
-                    </md-button>
-                </md-card-actions>
-                <md-card-actions layout="row" layout-align="start start">
-                    <md-button>
-                        {{teacher.subject}}
-                    </md-button>
-                     <span flex=""></span>
-                    <md-button>
-                        <a ui-sref="#">VISIT PROFILE</a>
-                    </md-button>
-                </md-card-actions>
-
-
+                        <star-rating rating="teacher.review | averageRating" readonly="true">
+                        </star-rating>
+                    </md-card-actions>
+                    <md-card-actions layout="row" layout-align="start start">
+                        <span>
+                            {{teacher.skill.subject}}
+                        </span>
+                        <span flex="">
+                        </span>
+                        <md-button ui-sref="teacherProfile({id:teacher._id})">
+                            VISIT PROFILE
+                        </md-button>
+                    </md-card-actions>
+               
             </md-card>
         </div>
         <div class="sign-up-banner" layout="column" layout-align="center center" layout-padding="">

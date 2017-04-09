@@ -9,7 +9,7 @@
       "auth": true,
       "appname": "skillsoutApp",
       "projectname": "skillsout",
-      "modules": "'angular-meteor',\n  'ui.router',\n  'ngMaterial',\n  'angularUtils.directives.dirPagination',\n  'accounts.ui'",
+      "modules": "'app',\n 'angular-meteor',\n  'ui.router',\n  'ngMaterial',\n  'angularUtils.directives.dirPagination',\n  'accounts.ui',\n  'angularRating'",
       "usedBower": false,
       "bower": false
     },

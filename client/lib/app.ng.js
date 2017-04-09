@@ -3,8 +3,10 @@ angular.module('skillsoutApp', [
   'ui.router',
   'ngMaterial',
   'angularUtils.directives.dirPagination',
-  'accounts.ui'
+  'accounts.ui',
+  'angular-rating'
 ]);
+
 
 onReady = function() {
   angular.bootstrap(document, ['skillsoutApp']);
