@@ -6,7 +6,7 @@ angular.module('skillsoutApp')
   .state('teacherProfile', {
     url: '/teacher-profile/:id',
     templateUrl: 'client/teacher-profile/teacher-profile.view.ng.html',
-    controller: 'TeacherProfileCtrl'
+    controller: 'TeacherProfileCtrl as vm'
   });
 });
 

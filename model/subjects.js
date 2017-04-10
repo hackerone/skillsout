@@ -1,15 +1,34 @@
+import SimpleSchema from 'simpl-schema'; 
 const subjects = new SimpleSchema({
     name: {
         type: String
     },
     types: {
-        type: [String]
+        type: Array
     },
-    createdAt: {
-        type: Date
+     createdAt: {
+        type: Date,
+        optional: true,
+        autoValue: function() {
+            if (this.isInsert) {
+                return new Date();
+            } else if (this.isUpsert) {
+                return {
+                    $setOnInsert: new Date()
+                };
+            } else {
+                this.unset();
+            }
+        }
     },
-    upadtedAt: {
-        type: Date
+    updatedAt: {
+        type: Date,
+        optional: true,
+        autoValue: function() {
+            if (this.isUpdate) {
+                return new Date();
+            }
+        }
     }
 });
 Subjects = new Mongo.Collection('subjects');

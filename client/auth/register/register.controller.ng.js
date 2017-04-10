@@ -1,7 +1,7 @@
 'use strict'
 angular.module('skillsoutApp')
 .directive('equals', equalsDirective)
-.controller('RegisterCtrl', function($scope) {
+.controller('RegisterCtrl', function($scope,$state) {
    var vm = this;
 
         // Data
@@ -15,24 +15,24 @@ angular.module('skillsoutApp')
         vm.serverError = [];
 
         function register(invalid) {
-            var email, password;
+           
             if (!invalid) {
-                email = vm.account.email;
-                password = vm.account.password;
                 Accounts.createUser({
-                    password: password,
-                    email: email
+                    password: vm.account.password,
+                    email: vm.account.email
                 }, function (err) {
                     if (err) {
                         console.log('error : ' + err);
                         vm.serverError = err;
                     } else {
-                        Meteor.call('activeUser', email, function (err) {
+                        Meteor.call('activeUser', vm.account.email, function (err) {
                             Meteor.logout();
                             if (!err) {
                                 console.log('You have been successfully registered., please check your email');
+                            $state.go('login');
                             }
                         });
+                        
                     }
                 });
             }

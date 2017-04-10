@@ -1,19 +1,11 @@
-(function () {
+(function() {
     'use strict';
-
-    angular
-        .module('app.account.auth.verify')
-        .controller('verifyEmailController', verifyEmailController);
-
+    angular.module('skillsoutApp').controller('verifyEmailController', verifyEmailController);
     /** @ngInject */
     function verifyEmailController($state, $scope) {
-
         var vm = this;
-
         // Data
-
         // Methods
-
         //////////////////////
         switch ($state.params.type) {
             case 'verify-email':
@@ -21,9 +13,8 @@
                 break;
         }
 
-
         function accountVerificationLink(token) {
-            Accounts.verifyEmail(token, function (err) {
+            Accounts.verifyEmail(token, function(err) {
                 if (err) {
                     console.log(err);
                     return;
@@ -36,22 +27,24 @@
                         verified = data.emails[i];
                     }
                 }
-                Meteor.users.update({_id: Meteor.userId()}, {
+                Meteor.users.update({
+                    _id: Meteor.userId()
+                }, {
                     $set: {
                         emails: [verified]
                     }
-                }, function (err) {
+                }, function(err) {
                     if (!err) {
-                        $state.go('app.account.setup', {userId: Meteor.userId()});
+                        $state.go('app.account.setup', {
+                            userId: Meteor.userId()
+                        });
                     }
                 });
             });
         }
-
         // Cleanup code
-        $scope.$on('$destroy', function () {
+        $scope.$on('$destroy', function() {
             vm = {};
         });
-
     }
 })();

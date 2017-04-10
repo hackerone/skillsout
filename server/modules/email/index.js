@@ -1,7 +1,13 @@
-import config from "/imports/webhooks/config";
-
+process.env.MAIL_URL='smtp://mahidaparth77@gmail.com:always1234@smtp.gmail.com:465';
+import { Random } from 'meteor/random';
 export default class email {
     constructor() {
+        this.emailTemplates ={
+            'activate-user':{
+                body:'Hello {{username}},<br> You Have been sussessfully registered to skillsout.<br>Thank You',
+                subject:'REgstration Successfull'
+            }
+        } 
     }
 
     /**
@@ -15,11 +21,11 @@ export default class email {
         let emailBody, emailSubject, emailDetail;
 
         // find Email Body
-        SSR.compileTemplate(tpl, Upmetrics.Email.getTemplate(tpl));
+        SSR.compileTemplate(tpl, this.emailTemplates[tpl].body);
         emailBody = SSR.render(tpl, sendData);
 
         // find Email Subject
-        SSR.compileTemplate(tpl, Upmetrics.Email.getSubject(tpl));
+        SSR.compileTemplate(tpl, this.emailTemplates[tpl].subject);
         emailSubject = SSR.render(tpl, sendData);
 
         // Assign in one Object
@@ -29,7 +35,7 @@ export default class email {
             subject: emailSubject,
             html: emailBody
         };
-
+            console.log(emailDetail);
         // send email
         return Email.send(emailDetail);
     }
@@ -46,7 +52,7 @@ export default class email {
     sendEmailVerification(newEmail, tpl, configUrl, updateWhen, sendingData) {
         let tokenRecord, sendData;
         // search Data By Entered Email
-        user = Accounts.findUserByEmail(newEmail);
+        let user = Accounts.findUserByEmail(newEmail);
         if (user) {
             tokenRecord = {
                 token: Random.secret(),
@@ -73,10 +79,10 @@ export default class email {
             let sendingDataObj = sendingData || {};
 
             // mearge Send Data And Extra Options
-            sendData = Object.assign({
-                url: `${config.clientUrl}${configUrl}${tokenRecord.token}`,
-                newEmail: newEmail
-            }, sendingDataObj);
+            // sendData = Object.assign({
+            //     url: `${config.clientUrl}${configUrl}${tokenRecord.token}`,
+            //     newEmail: newEmail
+            // }, sendingDataObj);
 
             return this.sendAccountsEmail(newEmail, tpl, sendData);
         }

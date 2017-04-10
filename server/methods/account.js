@@ -30,6 +30,6 @@ Meteor.methods({
         // add email in user
         this.unblock();
         Accounts.addEmail(this.userId, newEmail, false);
-        EmailObj.sendEmailVerification(newEmail, "activate-user", "/pages/auth/verify/verify-email/", 'emailSend');
+        EmailObj.sendEmailVerification(newEmail, "activate-user", "/verify-email", 'emailSend');
     }
 });

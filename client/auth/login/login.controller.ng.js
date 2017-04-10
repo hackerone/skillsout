@@ -1,6 +1,6 @@
 'use strict'
 angular.module('skillsoutApp')
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function($scope,$state) {
   var vm = this;
 
         // Data
@@ -34,7 +34,7 @@ angular.module('skillsoutApp')
                                 console.log('error:' + error);
                             }
                         });
-                        $state.go('app.account.home.profile', {userId: Meteor.userId()});
+                        $state.go('main');
                     }
                     /*login loader afterlogin hide*/
                     vm.activated = false;

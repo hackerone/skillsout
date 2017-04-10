@@ -1,22 +1,22 @@
 'use strict';
-angular.module('skillsoutApp').controller('DialogController', DialogController).controller('TeacherProfileCtrl', TeacherProfileCtrl);
-
-function TeacherProfileCtrl($scope, $stateParams, $mdDialog) {
+angular.module('skillsoutApp').config(config).controller('DialogController', DialogController).controller('TeacherProfileCtrl', TeacherProfileCtrl);
+function config($sceProvider) {
+    $sceProvider.enabled(false);
+}
+function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
     //data
     var vm = this;
     vm.viewName = 'TeacherProfile';
     vm.teacherId = $stateParams.id;
-
     //methods 
     vm.initialize = initialize;
     vm.bookNow = bookNow;
-
     ///////
     vm.initialize();
+
     function initialize() {
         var promise = teachersService.getSingleTeacher(vm.teacherId);
         promise.then(function(data) {
-            console.log(data);
             vm.teacher = data
         })
     }

@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema'; 
 const emailTemplates = new SimpleSchema({
     name: {
         type: String
@@ -28,9 +29,9 @@ const emailTemplates = new SimpleSchema({
         type: String,
         optional: true,
         min: 20,
-        autoform: {
-            rows: 5
-        }
+        // autoform: {
+        //     rows: 5
+        // }
     },
     createdAt: {
         type: Date,
@@ -47,7 +48,7 @@ const emailTemplates = new SimpleSchema({
             }
         }
     },
-    updatedAt = {
+    updatedAt: {
         type: Date,
         optional: true,
         autoValue: function() {

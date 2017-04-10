@@ -6,21 +6,13 @@
         Skillout Dance
         <span flex="">
         </span>
-        <md-button ui-sref="main">
-            Home
+        <md-button ui-sref="{{menu.sref}}" ng-repeat="menu in vm.menuList">
+            {{menu.name}}
         </md-button>
-         <md-button ui-sref="contact">
-            Contact US
-        </md-button>
-        <md-button ui-sref="login">
-            Login
-        </md-button>
-        <md-button ui-sref="register">
-            Register
-        </md-button>
+        
         <md-icon aria-label="Search" md-svg-icon="search">
         </md-icon>
-        <md-button class="md-icon-button" hide-gt-sm="" ng-click="toggleSidenav()">
+        <md-button class="md-icon-button" hide-gt-sm="" ng-click="vm.toggleSidenav()">
             <md-icon aria-label="Menu" class="material-icons">
                 menu
             </md-icon>

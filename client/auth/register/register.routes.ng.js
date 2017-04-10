@@ -5,7 +5,7 @@ angular.module('skillsoutApp')
   $stateProvider
   .state('register', {
     url: '/register',
-    templateUrl: 'client/register/register.view.ng.html',
+    templateUrl: 'client/auth/register/register.view.ng.html',
     controller: 'RegisterCtrl as vm'
   });
 });

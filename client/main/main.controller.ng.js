@@ -9,8 +9,17 @@ angular.module('skillsoutApp').controller('MainCtrl', function($scope, teachersS
         name: 2
     };
     vm.orderProperty = '1';
-    vm.searchTeachers = serachTeachers;
 
+    //methods
+    vm.initialize = initialize;
+    vm.searchTeachers = serachTeachers;
+    function initialize(){
+        var promise = teachersService.getLoadTeachers();
+        promise.then(function(data){
+            console.log(data);
+            vm.teachersProfile = data
+        })
+    }
     function serachTeachers() {
         var promise = teachersService.getTeachers(vm.search);
         promise.then(function(data){
@@ -18,6 +27,7 @@ angular.module('skillsoutApp').controller('MainCtrl', function($scope, teachersS
             vm.teachersProfile = data
         })
     };
+    initialize();
 });
 
 

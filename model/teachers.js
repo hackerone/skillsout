@@ -1,3 +1,4 @@
+ import SimpleSchema from 'simpl-schema'; 
  const teacher = new SimpleSchema({
     name: {
         type: String
@@ -15,8 +16,7 @@
         type: String
     },
     price: {
-        type: Number,
-        decimal: true
+        type: Number
     },
     email: {
         type: String
@@ -40,8 +40,7 @@
                 type: String
             },
             rating: {
-                type: Number,
-                decimal: true
+                type: Number
             }
         })
     },
@@ -49,17 +48,35 @@
         type: String,
         optional: true
     },
-     createdAt: {
-        type: Date
+      createdAt: {
+        type: Date,
+        optional: true,
+        autoValue: function() {
+            if (this.isInsert) {
+                return new Date();
+            } else if (this.isUpsert) {
+                return {
+                    $setOnInsert: new Date()
+                };
+            } else {
+                this.unset();
+            }
+        }
     },
-    upadtedAt: {
-        type: Date
+    updatedAt: {
+        type: Date,
+        optional: true,
+        autoValue: function() {
+            if (this.isUpdate) {
+                return new Date();
+            }
+        }
     }
 });
 
 Teachers = new Mongo.Collection('teachers');
 
-teachers.attachSchema(teacher);
+Teachers.attachSchema(teacher);
 
 Teachers.allow({
   insert: function(userId, thing) {

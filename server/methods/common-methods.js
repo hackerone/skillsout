@@ -1,4 +1,4 @@
-process.env.MAIL_URL='smtp://mahidaparth77@gmail.com:always1234@smtp.gmail.com:465';
+
 
 Meteor.methods({
   sendEmail(to, from, subject, text) {

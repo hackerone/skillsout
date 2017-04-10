@@ -5,7 +5,7 @@ angular.module('skillsoutApp')
   $stateProvider
   .state('login', {
     url: '/login',
-    templateUrl: 'client/login/login.view.ng.html',
+    templateUrl: 'client/auth/login/login.view.ng.html',
     controller: 'LoginCtrl as vm'
   });
 });
