@@ -1,4 +1,4 @@
-export const locations = new SimpleSchema({
+const locations = new SimpleSchema({
     name: {
         type: String
     },
@@ -10,7 +10,7 @@ export const locations = new SimpleSchema({
     }
 });
 Locations = new Mongo.Collection('locations');
-
+Locations.attachSchema(locations);
 Locations.allow({
   insert: function(userId, thing) {
     return true;

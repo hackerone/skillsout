@@ -1,4 +1,4 @@
-export const teacher = new SimpleSchema({
+ const teacher = new SimpleSchema({
     name: {
         type: String
     },
@@ -58,6 +58,8 @@ export const teacher = new SimpleSchema({
 });
 
 Teachers = new Mongo.Collection('teachers');
+
+teachers.attachSchema(teacher);
 
 Teachers.allow({
   insert: function(userId, thing) {

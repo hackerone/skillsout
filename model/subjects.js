@@ -1,4 +1,4 @@
-export const subjects = new SimpleSchema({
+const subjects = new SimpleSchema({
     name: {
         type: String
     },
@@ -13,6 +13,7 @@ export const subjects = new SimpleSchema({
     }
 });
 Subjects = new Mongo.Collection('subjects');
+Subjects.attachSchema(subjects)
 Subjects.allow({
     insert: function(userId, thing) {
         return true;

@@ -1,22 +1,40 @@
 'use strict';
 angular.module('skillsoutApp').controller('DialogController', DialogController).controller('TeacherProfileCtrl', TeacherProfileCtrl);
 
-function TeacherProfileCtrl($scope, $mdDialog) {
-    $scope.viewName = 'TEacherProfile';
-    $scope.bookNow = function(ev) {
+function TeacherProfileCtrl($scope, $stateParams, $mdDialog) {
+    //data
+    var vm = this;
+    vm.viewName = 'TeacherProfile';
+    vm.teacherId = $stateParams.id;
+
+    //methods 
+    vm.initialize = initialize;
+    vm.bookNow = bookNow;
+
+    ///////
+    vm.initialize();
+    function initialize() {
+        var promise = teachersService.getSingleTeacher(vm.teacherId);
+        promise.then(function(data) {
+            console.log(data);
+            vm.teacher = data
+        })
+    }
+
+    function bookNow(ev) {
         $mdDialog.show({
             controller: DialogController,
             templateUrl: 'client/teacher-profile/dialogs/book-now.view.ng.html',
             targetEvent: ev,
             clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
         }).then(function(answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
+            vm.status = 'You said the information was "' + answer + '".';
         }, function() {
-            $scope.status = 'You cancelled the dialog.';
+            vm.status = 'You cancelled the dialog.';
         });
     };
-    $scope.todos = [{
+    vm.todos = [{
         what: 'Brunch this weekend?',
         who: 'Min Li Chan',
         when: '3:08PM',
@@ -30,5 +48,6 @@ function TeacherProfileCtrl($scope, $mdDialog) {
 }
 
 function DialogController($scope) {
-	$scope.paymentForm = false;
+    var vm = this;
+    vm.paymentForm = false;
 }

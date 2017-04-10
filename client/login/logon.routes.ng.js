@@ -6,6 +6,6 @@ angular.module('skillsoutApp')
   .state('login', {
     url: '/login',
     templateUrl: 'client/login/login.view.ng.html',
-    controller: 'LoginCtrl'
+    controller: 'LoginCtrl as vm'
   });
 });

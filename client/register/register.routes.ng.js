@@ -6,6 +6,6 @@ angular.module('skillsoutApp')
   .state('register', {
     url: '/register',
     templateUrl: 'client/register/register.view.ng.html',
-    controller: 'RegisterCtrl'
+    controller: 'RegisterCtrl as vm'
   });
 });
