@@ -1,18 +1,11 @@
 'use strict';
-angular.module('skillsoutApp').config(config).controller('TeacherProfileCtrl', TeacherProfileCtrl).filter('trust', ['$sce',
-    function($sce) {
-        return function(value, type) {
-            // Defaults to treating trusted text as `html`
-            return $sce.trustAsResourceUrl(type || 'html', text);
-        }
-    }
-]);
+angular.module('skillsoutApp').config(config).controller('TeacherProfileCtrl', TeacherProfileCtrl);
 
 function config($sceProvider) {
     $sceProvider.enabled(false);
 }
 
-function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
+function TeacherProfileCtrl($scope, $stateParams, teachersService, classService, $mdDialog, $sce) {
     //data
     var vm = this;
     vm.viewName = 'TeacherProfile';
@@ -26,8 +19,20 @@ function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
     function initialize() {
         var promise = teachersService.getSingleTeacher(vm.teacherId);
         promise.then(function(data) {
-            data['banner']['youtube'] = vm.teacher = data
+            if (data.banner.youtube) {
+                data['banner']['youtube'] = $sce.trustAsResourceUrl(data.banner.youtube);
+            }
+            vm.teacher = data;
         })
+        var options = {
+            offset: 0,
+            limit: 2
+        };
+        var classesPromise = classService.getClass(vm.teacherId, options);
+        classesPromise.then(function(data) {
+            console.log(data)
+            vm.classes = data;
+        });
     }
 
     function bookNow(ev, amount) {

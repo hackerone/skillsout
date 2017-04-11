@@ -9,8 +9,8 @@ const classes = new SimpleSchema({
     teacherId: {
         type: String
     },
-    date:{
-        type:Date
+    date: {
+        type: Date
     },
     createdAt: {
         type: Date,

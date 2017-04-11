@@ -8,7 +8,9 @@
             <p class="md-body-2 padding-5">
                 {{vm.teacher.about}}
             </p>
-            <h3>
+            <h3 class="capitalize">
+                <md-icon class="fa fa-lg md-hue-2" md-font-icon="fa-map-marker" style="padding:5px;">
+                </md-icon>
                 {{vm.teacher.location}}
             </h3>
             <md-divider>
@@ -23,26 +25,27 @@
             </md-button>
         </md-card>
         <div flex="" layout="column">
-            <iframe class="youtube-video" ng-if="vm.teacher.banner.youtube" ng-src="vm.teacher.banner.youtube | trust" style="height:300px;">
+            <img class="image" ng-if="vm.teacher.banner.image" ng-src="{{vm.teacher.banner.image}}" style="height:300px;"/>
+            <iframe class="youtube-video" ng-if="vm.teacher.banner.youtube" ng-src="{{vm.teacher.banner.youtube}}" style="height:300px;">
             </iframe>
             <md-content flex="" layout="column">
                 <md-list flex="">
-                    <md-list-item class="md-3-line" ng-click="null" ng-repeat="item in todos">
+                    <md-list-item class="md-3-line" ng-click="null" ng-repeat="class in vm.classes">
                         <div class="md-list-item-text" layout="column">
                             <h3>
-                                {{ item.who }}
+                                {{class.date }}
                             </h3>
                             <h4>
-                                {{ item.what }}
+                                {{class.name }}
                             </h4>
                             <p>
-                                {{ item.notes }}
+                                {{ class.classId}}
                             </p>
                         </div>
                         <span flex="">
                         </span>
                         <div>
-                            <md-button class="md-raised md-primary">
+                            <md-button class="md-raised md-primary" ng-click="vm.bookNow($event,vm.teacher.price,class._id)">
                                 Book Now
                             </md-button>
                         </div>

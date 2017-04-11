@@ -34,6 +34,19 @@
              }
          })
      },
+     review: {
+         type: Array
+     },
+     'review.$': {
+         type: new SimpleSchema({
+             text: {
+                 type: String
+             },
+             rating: {
+                 type: Number
+             }
+         })
+     },
      profileImage: {
          type: String,
          optional: true

@@ -5,7 +5,7 @@ export default class email {
         this.emailTemplates ={
             'activate-user':{
                 body:'Hello {{username}},<br> You Have been sussessfully registered to skillsout.<br>Thank You',
-                subject:'REgstration Successfull'
+                subject:'Registration Successfull'
             }
         } 
     }

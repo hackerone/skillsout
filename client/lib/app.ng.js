@@ -4,13 +4,11 @@ angular.module('skillsoutApp', [
   'ui.router',
   'ngMaterial',
   'angularUtils.directives.dirPagination',
-  'accounts.ui',
-  require('angular-stripe')
-]).config(config);
-
-function config(stripeProvider){
-	stripeProvider.setPublishableKey('pk_test_7YYV9NvGFY7njbHsZtbjkPC6');
-}
+  'accounts.ui'
+]);
+// function config(stripeProvider){
+// 	stripeProvider.setPublishableKey('pk_test_7YYV9NvGFY7njbHsZtbjkPC6');
+// }
 
 onReady = function() {
   angular.bootstrap(document, ['skillsoutApp']);
