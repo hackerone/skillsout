@@ -1,8 +1,17 @@
 'use strict';
-angular.module('skillsoutApp').config(config).controller('DialogController', DialogController).controller('TeacherProfileCtrl', TeacherProfileCtrl);
+angular.module('skillsoutApp').config(config).controller('TeacherProfileCtrl', TeacherProfileCtrl).filter('trust', ['$sce',
+    function($sce) {
+        return function(value, type) {
+            // Defaults to treating trusted text as `html`
+            return $sce.trustAsResourceUrl(type || 'html', text);
+        }
+    }
+]);
+
 function config($sceProvider) {
     $sceProvider.enabled(false);
 }
+
 function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
     //data
     var vm = this;
@@ -17,21 +26,21 @@ function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
     function initialize() {
         var promise = teachersService.getSingleTeacher(vm.teacherId);
         promise.then(function(data) {
-            vm.teacher = data
+            data['banner']['youtube'] = vm.teacher = data
         })
     }
 
-    function bookNow(ev) {
+    function bookNow(ev, amount) {
         $mdDialog.show({
-            controller: DialogController,
             templateUrl: 'client/teacher-profile/dialogs/book-now.view.ng.html',
             targetEvent: ev,
             clickOutsideToClose: true,
-            fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
-        }).then(function(answer) {
-            vm.status = 'You said the information was "' + answer + '".';
-        }, function() {
-            vm.status = 'You cancelled the dialog.';
+            fullscreen: vm.customFullscreen, // Only for -xs, -sm breakpoints.,
+            controller: 'DialogController',
+            controllerAs: 'vm',
+            locals: {
+                amount: amount,
+            }
         });
     };
     vm.todos = [{
@@ -45,9 +54,4 @@ function TeacherProfileCtrl($scope, $stateParams, teachersService, $mdDialog) {
         when: '3:08PM',
         notes: " I'll be in your neighborhood doing errands"
     }];
-}
-
-function DialogController($scope) {
-    var vm = this;
-    vm.paymentForm = false;
 }

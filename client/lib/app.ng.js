@@ -1,12 +1,16 @@
+
 angular.module('skillsoutApp', [
   'angular-meteor',
   'ui.router',
   'ngMaterial',
   'angularUtils.directives.dirPagination',
   'accounts.ui',
-  'angular-rating'
-]);
+  require('angular-stripe')
+]).config(config);
 
+function config(stripeProvider){
+	stripeProvider.setPublishableKey('pk_test_7YYV9NvGFY7njbHsZtbjkPC6');
+}
 
 onReady = function() {
   angular.bootstrap(document, ['skillsoutApp']);

@@ -43,27 +43,31 @@
         <div class="margin-row" layout="row" layout-wrap="">
             <md-card flex="30" md-theme-watch="" ng-repeat="teacher in vm.teachersProfile track by $index">
                 <img alt="Washed Out" class="md-card-image" ng-src="{{teacher.profileImage}}"/>
-                    <md-card-actions layout="row" layout-align="start start">
-                        <span>
-                            {{teacher.name}}
-                        </span>
-                        <span flex="">
-                        </span>
-                        <star-rating rating="teacher.review | averageRating" readonly="true">
-                        </star-rating>
-                    </md-card-actions>
-                    <md-card-actions layout="row" layout-align="start start">
-                        <span>
-                            {{teacher.skill.subject}}
-                        </span>
-                        <span flex="">
-                        </span>
-                        <md-button ui-sref="teacherProfile({id:teacher._id})">
-                            VISIT PROFILE
-                        </md-button>
-                    </md-card-actions>
-               
+                <md-card-actions layout="row" layout-align="start start">
+                    <span>
+                        {{teacher.name}}
+                    </span>
+                    <span flex="">
+                    </span>
+                    <star-rating rating="teacher.review | averageRating" readonly="true">
+                    </star-rating>
+                </md-card-actions>
+                <md-card-actions layout="row" layout-align="start start">
+                    <span>
+                        {{teacher.skill.subject}}
+                    </span>
+                    <span flex="">
+                    </span>
+                    <md-button ui-sref="teacherProfile({id:teacher._id})">
+                        VISIT PROFILE
+                    </md-button>
+                </md-card-actions>
             </md-card>
+        </div>
+        <div layout="row" layout-align="center center" ng-if="vm.searched">
+            <md-button class="md-primary md-raised text-center" ng-click="vm.loadMore" ng-disabled="vm.loading">
+                Load More
+            </md-button>
         </div>
         <div class="sign-up-banner" layout="column" layout-align="center center" layout-padding="">
             <h1 class="md-display-1">

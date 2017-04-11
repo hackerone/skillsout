@@ -18,12 +18,12 @@
             </h3>
             <md-divider>
             </md-divider>
-            <md-button class="md-raised md-primary" ng-click="bookNow($event,vm.teacher.price)">
+            <md-button class="md-raised md-primary" ng-click="vm.bookNow($event,vm.teacher.price)">
                 Book Now
             </md-button>
         </md-card>
         <div flex="" layout="column">
-            <iframe class="youtube-video" ng-if="vm.teacher.banner.youtube" ng-src="{{vm.teacher.banner.youtube}}" style="height:300px;">
+            <iframe class="youtube-video" ng-if="vm.teacher.banner.youtube" ng-src="vm.teacher.banner.youtube | trust" style="height:300px;">
             </iframe>
             <md-content flex="" layout="column">
                 <md-list flex="">

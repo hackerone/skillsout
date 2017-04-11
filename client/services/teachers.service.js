@@ -19,9 +19,9 @@ function teachers($q) {
         });
         return deferred.promise;
     }
-    function getTeachers(search) {
+    function getTeachers(search,options) {
         var deferred = $q.defer();
-        Meteor.call('getTeachers', search, function(err, result) {
+        Meteor.call('getTeachers', search,options, function(err, result) {
             if (err) {
                 deferred.reject(err);
             } else {

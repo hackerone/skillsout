@@ -5,7 +5,6 @@ Meteor.publish('teachers', function(options, search) {
     };
 
     var collection = Teachers.find(where, options);
-    console.log(collection.count())
     return collection;
 });
 

@@ -15,16 +15,7 @@ Meteor.startup(function() {
                 subject: 'dance',
                 type: 'salsa'
             },
-            review: [{
-                text: 'very good one',
-                rating: 5
-            }, {
-                text: 'very good one',
-                rating: 3
-            }, {
-                text: 'very good one',
-                rating: 2
-            }],
+            
             profileImage: 'img/profile_img.jpg'
         },
         {
@@ -42,16 +33,7 @@ Meteor.startup(function() {
                 subject: 'dance',
                 type: 'rumba'
             },
-            review: [{
-                text: 'very good one',
-                rating: 5
-            }, {
-                text: 'very good one',
-                rating: 3
-            }, {
-                text: 'very good one',
-                rating: 2
-            }],
+            
             profileImage: 'img/profile_img.jpg'
         },
         {
@@ -69,16 +51,6 @@ Meteor.startup(function() {
                 subject: 'dance',
                 type: 'salsa'
             },
-            review: [{
-                text: 'very good one',
-                rating: 5
-            }, {
-                text: 'very good one',
-                rating: 3
-            }, {
-                text: 'very good one',
-                rating: 2
-            }],
             profileImage: 'img/profile_img.jpg'
         }];
         teachers.forEach(function(teacher) {
@@ -86,5 +58,3 @@ Meteor.startup(function() {
         });
     }
 });
-
-

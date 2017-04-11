@@ -1,22 +1,29 @@
-<md-dialog aria-label="Mango (Fruit)" class="payment-dialog">
-    <md-dialog-content ng-if="paymentForm">
+<md-dialog class="payment-dialog">
+    <md-dialog-content ng-if="vm.paymentForm">
         <form ng-cloak="">
             <div class="md-dialog-content">
                 <h2 class="text-center">
-                    PAYMENT
+                    PAYMENT AMOUNT : $ {{vm.amount}}
                 </h2>
+                <md-divider></md-divider>
                 <md-content layout-gt-sm="row" layout-padding="" md-theme="docs-dark">
-                    <md-input-container flex="50">
+                    <md-input-container flex="25">
                         <label>
                             Name On Card
                         </label>
-                        <input ng-model="payment.nameOnCard"/>
+                        <input ng-model="vm.payment.name"/>
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>
                             Card Number
                         </label>
-                        <input ng-model="payment.email" type="email"/>
+                        <input ng-model="vm.payment.number" type="text"/>
+                    </md-input-container>
+                    <md-input-container flex="25">
+                        <label>
+                            CVV
+                        </label>
+                        <input ng-model="vm.payment.cvv2" type="text"/>
                     </md-input-container>
                 </md-content>
                 <md-content layout-padding="">
@@ -25,7 +32,7 @@
                             <label>
                                 Postal Code
                             </label>
-                            <input md-maxlength="5" name="postalCode" ng-model="payment.postalCode" ng-pattern="/^[0-9]{5}$/" placeholder="12345" required=""/>
+                            <input md-maxlength="5" name="postalCode" ng-model="vm.payment.postalCode" ng-pattern="/^[0-9]{5}$/" placeholder="12345" required=""/>
                             <div multiple="" ng-messages="paymentForm.postalCode.$error" role="alert">
                                 <div class="my-message" ng-message="required">
                                     You must supply a postal code.
@@ -43,33 +50,35 @@
                             <label>
                                 Expiry Date
                             </label>
-                            <input ng-model="payment.expiryDate" placeholder="MM/YYYYY" type="text"/>
+                            <input ng-model="vm.payment.expiryDate" placeholder="MM/YYYYY" type="text"/>
                         </md-input-container>
                         <md-input-container flex="25">
                             <label>
                                 Security Code
                             </label>
-                            <input ng-model="payment.securityCode" type="text"/>
+                            <input ng-model="vm.payment.securityCode" type="text"/>
                         </md-input-container>
                     </div>
                 </md-content>
                 <md-content>
                     <div layout="column" layout-align="center center">
-                        <md-button class="md-primary md-raised">
-                            Proceed
+                        <md-button class="md-primary md-raised" ng-click="vm.payWithStripe()">
+                            <span ng-if="!vm.stripeLoading">PROCEED</span>
+                             <md-icon ng-if="vm.stripeLoading" class="fa fa-lg fa-spin md-primary md-hue-2 " md-font-icon="fa-spinner"></md-icon>
                         </md-button>
                         <span>
                             OR
                         </span>
-                        <md-button class="md-primary md-raised">
-                            PAY WITH PAYPAL
+                        <md-button class="md-primary md-raised" ng-click="vm.payWithPaypal()">
+                            <span ng-if="!vm.paypalLoading">PAY WITH PAYPAL</span>
+                             <md-icon ng-if="vm.paypalLoading" class="fa fa-lg fa-spin md-primary md-hue-2" md-font-icon="fa-spinner"></md-icon>
                         </md-button>
                     </div>
                 </md-content>
             </div>
         </form>
     </md-dialog-content>
-    <md-content class="text-center thankyou-container" layout-align="center center" ng-if="!paymentForm">
+    <md-content class="text-center thankyou-container" layout-align="center center" ng-if="!vm.paymentForm ">
         <h2 class="md-primary">
             THANK YOU
         </h2>
