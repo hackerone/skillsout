@@ -6,7 +6,7 @@
         // State
         $stateProvider.state('resetPassword', {
             url: '/reset-password/:token',
-            templateUrl: 'client/auth/reset-assword/reset-password.view.ng.html',
+            templateUrl: 'client/auth/reset-password/reset-password.view.ng.html',
             controller: 'ResetPasswordController as vm',
             bodyClass: 'reset-password'
         });

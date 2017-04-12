@@ -2,6 +2,7 @@
     <div id="login-form-wrapper" layout="column" layout-align="center center">
         <div id="login-form" class="md-whiteframe-8dp">
             <div class="title" >Log in to your account</div>
+            <span style="color:red;">{{vm.serverError}}</span>
             <form name="loginForm" ng-submit="vm.login()" novalidate>
                 <md-input-container class="md-block" md-no-float>
                     <input type="email" name="email" ng-model="vm.form.email" placeholder="Email"
@@ -34,7 +35,7 @@
                         <span >Remember Me</span>
                     </md-checkbox>
 
-                    <a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color"
+                    <a ui-sref="forgotPassword" class="forgot-password md-accent-color link"
                        >Forgot Password?</a>
                 </div>
 
@@ -53,7 +54,7 @@
                 <div layout="row" layout-align="center center">
                 <span>
                     <md-icon md-font-icon="icon-google-plus" class="s16"></md-icon>
-                    <span translate="LOGIN.WITH_GOOGLE">Log in with Google</span>
+                    <span >Log in with Google</span>
                 </span>
                 </div>
             </md-button>
@@ -62,14 +63,14 @@
                 <div layout="row" layout-align="center center">
                 <span>
                     <md-icon md-font-icon="icon-facebook" class="s16"></md-icon>
-                    <span translate="LOGIN.WITH_FACEBOOK">Log in with Facebook</span>
+                    <span >Log in with Facebook</span>
                 </span>
                 </div>
             </md-button>
 
             <div class="register" layout="row" layout-sm="column" layout-align="center center">
                 <span class="text" translate="LOGIN.DONT_HAVE_ACCOUNT">Don't have an account?</span>
-                <a class="link" ui-sref="app.pages_auth_register" translate="LOGIN.CREATE_ACCOUNT">Create an account</a>
+                <a class="link" ui-sref="register" translate="LOGIN.CREATE_ACCOUNT">Create an account</a>
             </div>
           
         </div>

@@ -12,7 +12,7 @@ function toolbarController($scope, $mdSidenav) {
     var vm = this;
     vm.menuList = [{
         name: 'Home',
-        sref: '/'
+        sref: 'main'
     }, {
         name: 'Contact-US',
         sref: 'contact'

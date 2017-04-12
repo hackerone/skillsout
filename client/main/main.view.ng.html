@@ -63,9 +63,12 @@
                     </md-button>
                 </md-card-actions>
             </md-card>
+            <md-card ng-if="vm.noResult">
+                <h3>No Result Availabe</h3>
+            </md-card>
         </div>
         <div layout="row" layout-align="center center" ng-if="vm.searched">
-            <md-button class="md-primary md-raised text-center" ng-click="vm.loadMore" ng-disabled="vm.loading">
+            <md-button class="md-primary md-raised text-center" ng-click="vm.loadMore()" ng-disabled="vm.loading">
                 Load More
             </md-button>
         </div>
@@ -76,7 +79,7 @@
             <h1 class="md-headline">
                 LERANING HOW TO DANCE IS JUST A CLICK AWAY!
             </h1>
-            <md-button class="md-primary md-raised">
+            <md-button ui-sref="register" class="md-primary md-raised">
                 SIGN UP
             </md-button>
         </div>

@@ -4,7 +4,7 @@ angular.module('skillsoutApp')
   var vm = this;
 
         // Data
-        vm.serverError = [];
+      
         /*login loader default hide*/
         vm.activated = false;
         // Methods
@@ -21,7 +21,8 @@ angular.module('skillsoutApp')
                 vm.serverError = null;
                 Meteor.loginWithPassword(vm.form.email, vm.form.password, function (error) {
                     if (error) {
-                        vm.serverError = error;
+                        vm.serverError = error.reason;
+                        console.log(error);
                     } else {
                         /*Set session expiration days for logged-in user*/
                         var rememberMe = vm.form.rememberMe;

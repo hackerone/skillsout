@@ -9,20 +9,16 @@ angular.module('skillsoutApp').controller('MainCtrl', function($scope, teachersS
     //methods
     vm.initialize = initialize;
     vm.searchTeachers = serachTeachers;
-    vm.loadMore = data;
-
+    vm.loadMore = loadMore;
+    vm.noResult = false;
     function initialize() {
         var promise = teachersService.getLoadTeachers();
         promise.then(function(data) {
-            console.log(data);
             vm.teachersProfile = data
         })
     }
 
-
-
-    function data() {
-        console.log('hi');
+    function loadMore() {
         vm.loading = true;
         vm.page++;
         
@@ -31,6 +27,11 @@ angular.module('skillsoutApp').controller('MainCtrl', function($scope, teachersS
             limit: vm.perPage
         });
         promise.then(function(data) {
+            console.log(data);
+            if(_.size(data) === 0){
+                vm.searched = false;
+                vm.noResult = true;
+            }
             vm.teachersProfile = data
             vm.loading = false;
         });
@@ -42,10 +43,14 @@ angular.module('skillsoutApp').controller('MainCtrl', function($scope, teachersS
             limit: vm.perPage
         });
         promise.then(function(data) {
-            vm.teachersProfile = data
+            if(_.size(data) === 0){
+                vm.noResult = true;
+            }
+            vm.teachersProfile = data;
             if(_.size(data) >= vm.perPage){
                 vm.searched = true;
             }
+
         });
     };
     initialize();
