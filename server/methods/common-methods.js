@@ -1,6 +1,4 @@
-// import Payment from '../modules/payment/index';
-// console.log(Payment);
-// PaymentObj = new Payment;
+
 let Stripe = Npm.require('stripe')('sk_test_kQvSx95A2ZiPtfWPCBQ4rCpj');
 Meteor.methods({
     sendEmail(to, from, subject, text) {
@@ -41,5 +39,22 @@ Meteor.methods({
         } catch (e) {
             return e;
         }
+    },
+    createPaypalPayment: function(card, amount, email) {
+        var promise = new Promise(function(resolve, reject) {
+            Meteor.Paypal.purchase(card, {
+                total: amount,
+                currency: 'USD'
+            }, function(err, results) {
+                if (err) {
+                    reject(err); // error, rejected
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+        return promise.then(function(data) {
+            return data;
+        })
     }
 });

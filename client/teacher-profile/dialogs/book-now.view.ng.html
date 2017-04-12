@@ -5,7 +5,13 @@
                 <h2 class="text-center">
                     PAYMENT AMOUNT : $ {{vm.amount}}
                 </h2>
-                <md-divider></md-divider>
+                <md-divider>
+                </md-divider>
+                <md-input-container>
+                    <label>
+                        {{vm.error}}
+                    </label>
+                </md-input-container>
                 <md-content layout-gt-sm="row" layout-padding="" md-theme="docs-dark">
                     <md-input-container flex="25">
                         <label>
@@ -63,15 +69,21 @@
                 <md-content>
                     <div layout="column" layout-align="center center">
                         <md-button class="md-primary md-raised" ng-click="vm.payWithStripe()">
-                            <span ng-if="!vm.stripeLoading">PROCEED</span>
-                             <md-icon ng-if="vm.stripeLoading" class="fa fa-lg fa-spin md-primary md-hue-2 " md-font-icon="fa-spinner"></md-icon>
+                            <span ng-if="!vm.stripeLoading">
+                                PROCEED
+                            </span>
+                            <md-icon class="fa fa-lg fa-spin md-primary md-hue-2 " md-font-icon="fa-spinner" ng-if="vm.stripeLoading">
+                            </md-icon>
                         </md-button>
                         <span>
                             OR
                         </span>
                         <md-button class="md-primary md-raised" ng-click="vm.payWithPaypal()">
-                            <span ng-if="!vm.paypalLoading">PAY WITH PAYPAL</span>
-                             <md-icon ng-if="vm.paypalLoading" class="fa fa-lg fa-spin md-primary md-hue-2" md-font-icon="fa-spinner"></md-icon>
+                            <span ng-if="!vm.paypalLoading">
+                                PAY WITH PAYPAL
+                            </span>
+                            <md-icon class="fa fa-lg fa-spin md-primary md-hue-2" md-font-icon="fa-spinner" ng-if="vm.paypalLoading">
+                            </md-icon>
                         </md-button>
                     </div>
                 </md-content>
