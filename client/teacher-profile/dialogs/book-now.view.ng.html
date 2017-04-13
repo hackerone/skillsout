@@ -1,10 +1,11 @@
 <md-dialog class="payment-dialog">
-    <md-dialog-content ng-if="vm.paymentForm">
+    <md-dialog-content ng-show="vm.paymentForm">
         <form ng-cloak="">
             <div class="md-dialog-content">
                 <h2 class="text-center">
                     PAYMENT AMOUNT : $ {{vm.amount}}
                 </h2>
+                {{vm.error}}
                 <md-divider>
                 </md-divider>
                 <md-input-container>
@@ -58,17 +59,11 @@
                             </label>
                             <input ng-model="vm.payment.expiryDate" placeholder="MM/YYYYY" type="text"/>
                         </md-input-container>
-                        <md-input-container flex="25">
-                            <label>
-                                Security Code
-                            </label>
-                            <input ng-model="vm.payment.securityCode" type="text"/>
-                        </md-input-container>
                     </div>
                 </md-content>
                 <md-content>
                     <div layout="column" layout-align="center center">
-                        <md-button class="md-primary md-raised" ng-click="vm.payWithStripe()">
+                        <!-- <md-button class="md-primary md-raised" ng-click="vm.paymentOfClass('stripe')">
                             <span ng-if="!vm.stripeLoading">
                                 PROCEED
                             </span>
@@ -77,8 +72,13 @@
                         </md-button>
                         <span>
                             OR
-                        </span>
-                        <md-button class="md-primary md-raised" ng-click="vm.payWithPaypal()">
+                        </span> -->
+
+
+
+
+
+                        <md-button class="md-primary md-raised" ng-click="vm.paymentOfClass('paypal')">
                             <span ng-if="!vm.paypalLoading">
                                 PAY WITH PAYPAL
                             </span>
@@ -90,7 +90,7 @@
             </div>
         </form>
     </md-dialog-content>
-    <md-content class="text-center thankyou-container" layout-align="center center" ng-if="!vm.paymentForm ">
+    <md-content class="text-center thankyou-container" layout-align="center center" ng-show="!vm.paymentForm">
         <h2 class="md-primary">
             THANK YOU
         </h2>

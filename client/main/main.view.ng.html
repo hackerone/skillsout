@@ -58,13 +58,15 @@
                     </span>
                     <span flex="">
                     </span>
-                    <md-button ui-sref="teacherProfile({id:teacher._id})">
+                    <md-button ui-sref="teacherProfile({teacherId:teacher._id})">
                         VISIT PROFILE
                     </md-button>
                 </md-card-actions>
             </md-card>
             <md-card ng-if="vm.noResult">
-                <h3>No Result Availabe</h3>
+                <h3>
+                    No Result Availabe
+                </h3>
             </md-card>
         </div>
         <div layout="row" layout-align="center center" ng-if="vm.searched">
@@ -79,7 +81,7 @@
             <h1 class="md-headline">
                 LERANING HOW TO DANCE IS JUST A CLICK AWAY!
             </h1>
-            <md-button ui-sref="register" class="md-primary md-raised">
+            <md-button class="md-primary md-raised" ui-sref="register">
                 SIGN UP
             </md-button>
         </div>

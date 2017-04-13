@@ -3,14 +3,14 @@ module.exports = {
     one: {
       host: 'ec2-52-214-132-184.eu-west-1.compute.amazonaws.com',
       username: 'ec2-user',
-      pem: './path/to/pem'
+      pem: 'C:/Users/Admin/Desktop/devkey.pem'
     }
   },
 
   meteor: {
     // TODO: change app name and path
     name: 'Skiillsout',
-    path: '../app',
+    path: 'E:/skillsout',
     servers: {
       one: {},
     },
@@ -24,5 +24,4 @@ module.exports = {
   },
   // Meteor Up checks if the app comes online just after the deployment
   // before mup checks that, it will wait for no. of seconds configured below
-  "deployCheckWaitTime": 15
 };

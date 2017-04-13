@@ -9,11 +9,12 @@ function TeacherProfileCtrl($scope, $stateParams, teachersService, classService,
     //data
     var vm = this;
     vm.viewName = 'TeacherProfile';
-    vm.teacherId = $stateParams.id;
+    vm.teacherId = $stateParams.teacherId;
     //methods 
     vm.initialize = initialize;
     vm.bookNow = bookNow;
     ///////
+    
     vm.initialize();
 
     function initialize() {
