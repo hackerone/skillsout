@@ -32,28 +32,41 @@ Meteor.methods({
                     customer: source.customer
                 });
             }).then(function(charge) {
+                var payment = {
+                    email:email,
+                    teacherId:teacherId,
+                    amount:amount,
+                    paymentVia:'stripe'
+                }
+                Payment.insert(payment)
                 return charge;
             }).catch(function(err) {
-                return err;
+                console.log(err);
+                return err.message;
             });
         } catch (e) {
+            console.log(e);
             return e;
         }
     },
     createPaypalPayment: function(card, amount, email) {
+        console.log(card,amount,email);
         var promise = new Promise(function(resolve, reject) {
             Meteor.Paypal.purchase(card, {
                 total: amount,
                 currency: 'USD'
             }, function(err, results) {
                 if (err) {
+                    console.log(err);
                     reject(err); // error, rejected
                 } else {
+                    console.log(results);
                     resolve(results);
                 }
             });
         });
         return promise.then(function(data) {
+            console.log(data);
             return data;
         })
     }
